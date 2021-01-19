@@ -1,4 +1,4 @@
-let num = prompt("Number of Rows");
+const num = prompt("Number of Rows");
 let pattern = "";
 for (let rows = 1; rows <= num; rows++) {
   for (let cols = num - rows; cols > 0; cols--) {
