@@ -8,6 +8,8 @@ const printTable = (row, column) => {
     document.write("<tr>");
     for (let tableColumn = 1; tableColumn <= column; tableColumn++) {
       document.write(`<td>Row-${tableRow} Column-${tableColumn}</td>`);
+      // let val = prompt("Please Enter Content");
+      // document.write(`<td>${val}</td>`);
     }
     document.write("</tr>");
   }
