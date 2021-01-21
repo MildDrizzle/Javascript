@@ -1,6 +1,6 @@
 let currentOperation = "add";
 let currentUpdateId;
-const dataArray = [];
+let dataArray = [];
 const addData = () => {
   const data1 = document.getElementById("data1");
   const data2 = document.getElementById("data2");
@@ -21,7 +21,11 @@ const addData = () => {
   cell4.innerHTML =
     cell4.innerHTML +
     `<button class="btn-danger" onclick="deleteRow(${randomId})">Delete</button>`;
-  dataArray.push({ firstName: data1.value, secondName: data2.value });
+  dataArray.push({
+    id: randomId,
+    firstName: data1.value,
+    secondName: data2.value,
+  });
   data1.value = data2.value = "";
 };
 
@@ -43,6 +47,9 @@ const deleteRow = (id) => {
     document.getElementById("data2").value = "";
   }
   document.getElementById(id).remove();
+  dataArray = dataArray.filter((data) => {
+    return data.id !== id;
+  });
 };
 
 const updateData = (id) => {
@@ -53,6 +60,11 @@ const updateData = (id) => {
   document.getElementById("addBtn").innerHTML = "Add";
   document.getElementById("addBtn").classList = "btn-add";
   document.getElementById("addBtn").setAttribute("onclick", `addData()`);
+  const index = dataArray.findIndex((data) => {
+    if (data.id === id) return true;
+  });
+  dataArray[index].firstName = data1;
+  dataArray[index].secondName = data2;
   data1.value = data2.value = "";
   currentUpdateId = "";
 };
@@ -103,24 +115,35 @@ const renderData = () => {
   let count = 1213;
   data.forEach((dt) => {
     const { "First Name": data1, "Last Name": data2 } = dt;
-
-    const randomId = Date.now() + count;
-    count += 1000;
-    const row = document.getElementById("data").insertRow(-1);
-    row.id = randomId;
-    const cell1 = row.insertCell(0);
-    const cell2 = row.insertCell(1);
-    const cell3 = row.insertCell(2);
-    const cell4 = row.insertCell(3);
-    cell1.classList = cell2.classList = "data-field";
-    cell1.innerHTML = data1;
-    cell2.innerHTML = data2;
-    cell3.innerHTML =
-      cell3.innerHTML +
-      `<button class="btn-success" onclick="update(${randomId})">Update</button>`;
-    cell4.innerHTML =
-      cell4.innerHTML +
-      `<button class="btn-danger" onclick="deleteRow(${randomId})">Delete</button>`;
-    dataArray.push({ firstName: data1, secondName: data2 });
+    let present = false;
+    for (let i = 0; i <= dataArray.length; i++) {
+      if (
+        dataArray[i] &&
+        dataArray[i].firstName === data1 &&
+        dataArray[i].secondName === data2
+      ) {
+        present = true;
+      }
+    }
+    if (!present) {
+      const randomId = Date.now() + count;
+      count += 1000;
+      const row = document.getElementById("data").insertRow(-1);
+      row.id = randomId;
+      const cell1 = row.insertCell(0);
+      const cell2 = row.insertCell(1);
+      const cell3 = row.insertCell(2);
+      const cell4 = row.insertCell(3);
+      cell1.classList = cell2.classList = "data-field";
+      cell1.innerHTML = data1;
+      cell2.innerHTML = data2;
+      cell3.innerHTML =
+        cell3.innerHTML +
+        `<button class="btn-success" onclick="update(${randomId})">Update</button>`;
+      cell4.innerHTML =
+        cell4.innerHTML +
+        `<button class="btn-danger" onclick="deleteRow(${randomId})">Delete</button>`;
+      dataArray.push({ id: randomId, firstName: data1, secondName: data2 });
+    }
   });
 };
