@@ -9,6 +9,7 @@ const groupBySport = (sportsData) => {
   sportsData.forEach((element) => {
     element.Sports.forEach((sportName) => {
       if (sport.has(sportName)) {
+        // If there are multiple persons playing the sport then add in the map array.
         const tempdata = sport.get(sportName);
         sport.set(sportName, [...tempdata, element.Name]);
       } else {

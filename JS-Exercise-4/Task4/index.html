@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Task 4</title>
+    <link rel="stylesheet" href="dist/css/app.min.css" />
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <td><input id="data1" type="text" /></td>
+          <td><input id="data2" type="text" /></td>
+          <td>
+            <button class="btn-add" id="addBtn" onclick="addData()">Add</button>
+          </td>
+        </tr>
+      </thead>
+      <tbody id="data">
+        <tr>
+          <td>
+            <input type="checkbox" onchange="selectAll()" id="mainCheckbox" />
+          </td>
+          <td>
+            <label for="mainCheckbox">Select All</label>
+          </td>
+          <td id="totalSelected">Total Selected Row</td>
+          <td>
+            <button class="btn-danger" onclick="deleteSelcted()">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="script.js"></script>
+  </body>
+</html>

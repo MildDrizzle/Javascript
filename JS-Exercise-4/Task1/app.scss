@@ -1,0 +1,73 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-size: large;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #5887ff;
+}
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+.time-container {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #715aff;
+  border: 0.1px solid black;
+}
+
+.date-container {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #55c1ff;
+  border: 0.1px solid black;
+}
+
+.stopwatch-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+  margin: 2rem;
+  font-size: xx-large;
+}
+
+button {
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: large;
+  text-transform: uppercase;
+  font-weight: 500;
+  outline: none;
+  margin: 0 0.3rem;
+}
+.start {
+  background-color: rgb(8, 194, 23);
+}
+.stop {
+  background-color: red;
+}
+.resume {
+  background-color: yellow;
+  color: black;
+}
+.restart {
+  background-color: blueviolet;
+}
+
+button:disabled {
+  background-color: rgb(24, 1, 1);
+  color: white;
+}

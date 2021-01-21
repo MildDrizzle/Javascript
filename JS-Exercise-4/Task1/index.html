@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Exercise 4 Task 1</title>
+    <link rel="stylesheet" href="./dist/css/app.min.css" />
+  </head>
+  <body onload="setDateTime()">
+    <div class="container">
+      <div class="time-container">
+        <p>Time</p>
+        <p id="time"></p>
+      </div>
+      <div class="date-container">
+        <p>Date</p>
+        <p id="date"></p>
+      </div>
+    </div>
+    <div class="stopwatch-container">
+      <p>Stopwatch</p>
+      <p id="counter">00:00:00:00</p>
+    </div>
+    <div class="buttons">
+      <button class="start" id="start" onclick="startStopWatch()">Start</button>
+      <button class="stop" id="stop" onclick="stopStopWatch()" disabled>
+        Stop
+      </button>
+      <button class="resume" id="resume" onclick="resumeStopWatch()" disabled>
+        Resume
+      </button>
+      <button class="restart" id="restart" onclick="resetStopWatch()" disabled>
+        Restart
+      </button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

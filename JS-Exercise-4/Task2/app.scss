@@ -1,0 +1,93 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn-danger {
+  background-color: red;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.3rem 1.5rem;
+  font-weight: bold;
+  font-size: medium;
+  transition: 0.19s ease-in-out;
+  outline: none;
+
+  &:hover {
+    padding: 0.4rem 1.6rem;
+  }
+}
+
+.btn-success {
+  background-color: rgb(16, 182, 24);
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.3rem 1.5rem;
+  font-weight: bold;
+  font-size: medium;
+  transition: 0.19s ease-in-out;
+  outline: none;
+
+  &:hover {
+    padding: 0.4rem 1.6rem;
+  }
+}
+
+.btn-add {
+  color: rgb(120, 11, 223);
+  background-color: white;
+  border: 3px solid rgb(120, 11, 223);
+  font-weight: bold;
+  padding: 0.2rem 1.4rem;
+  margin: 1rem 0;
+  transition: 0.19s ease-in-out;
+  outline: none;
+  svg {
+    padding-right: 0.4rem;
+  }
+  &:hover {
+    padding: 0.3rem 1.5rem;
+  }
+}
+
+.btn-update {
+  color: rgb(243, 209, 13);
+  background-color: white;
+  border: 3px solid rgb(243, 209, 13);
+  font-weight: bold;
+  padding: 0.2rem 1rem;
+  margin: 1rem 0;
+  transition: 0.19s ease-in-out;
+  outline: none;
+  svg {
+    padding-right: 0.4rem;
+  }
+  &:hover {
+    padding: 0.3rem 1.2rem;
+  }
+}
+
+.data-field {
+  height: 1.25rem;
+  font-weight: bold;
+  color: rgb(73, 75, 75);
+  padding: 0.2rem 0 0.2rem 0.4rem;
+  background-color: rgb(235, 235, 235);
+  border: 0.01rem solid rgb(99, 99, 99);
+}
+
+input {
+  height: 1.25rem;
+  font-weight: bold;
+  color: rgb(73, 75, 75);
+  padding: 0.2rem 0 0.2rem 0.4rem;
+}
+
+table,
+th,
+td {
+  padding: 5px;
+}
+table {
+  border-spacing: 15px;
+}
