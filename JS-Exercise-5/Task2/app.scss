@@ -1,0 +1,35 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+  flex-direction: column;
+  background-color: #ec0b43;
+  color: white;
+}
+li em {
+  background: #0075f2;
+  font-weight: bold;
+  font-style: normal;
+}
+
+ul > li {
+  display: none;
+  padding: 0.4rem;
+  list-style-type: none;
+}
+
+input {
+  padding: 1rem 5rem;
+  background-color: #cc3363;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: larger;
+}
+
+input::placeholder {
+  color: white;
+}
