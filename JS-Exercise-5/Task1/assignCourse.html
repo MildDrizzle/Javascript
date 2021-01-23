@@ -56,21 +56,23 @@
         </div>
       </div>
     </nav>
-    <div class="container">
+    <div
+      class="container d-flex align-items-center justify-content-center flex-column"
+    >
       <select
-        class="form-select"
+        class="form-select w-50"
         aria-label="Default select example"
         id="names"
         onchange="getCourses()"
       >
         <option selected disabled>Select Name</option>
       </select>
-      <table class="table w-25">
+      <table class="table w-50 my-5">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Course Name</th>
-            <th scope="col">Assign/Withdraw Course</th>
+            <th scope="col">Assign/Revoke Course</th>
           </tr>
         </thead>
         <tbody id="table"></tbody>

@@ -14,7 +14,7 @@ const loadStudentCourses = () => {
     const course = courses.filter((courseee) => courseee.id === courseId)[0];
     console.log(course);
     dom.innerHTML += `<div class="col-lg-4"><div class="card" style="width: 18rem;">
-    <img src="images/${course.image}" class="card-img-top" alt="...">
+    <img src="${course.image}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${course.name}</h5>
     </div>

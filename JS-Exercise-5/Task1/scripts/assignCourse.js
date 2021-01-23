@@ -54,6 +54,7 @@ const assignCourse = (id) => {
   data.users.push(userId);
   oldData.push(data);
   localStorage.setItem("courses", JSON.stringify(oldData));
+  getCourses();
 };
 
 const deleteCourse = (id) => {
@@ -70,4 +71,5 @@ const deleteCourse = (id) => {
   console.log(oldData);
   oldData.push(data);
   localStorage.setItem("courses", JSON.stringify(oldData));
+  getCourses();
 };

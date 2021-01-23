@@ -5,11 +5,11 @@ const handleFormSubmit = (event) => {
   const image = formData.get("image");
   const id = Date.now();
   if (localStorage.getItem("courses") === null) {
-    const courses = [{ id, name: courseName, image: image.name, users: [] }];
+    const courses = [{ id, name: courseName, image, users: [] }];
     localStorage.setItem("courses", JSON.stringify(courses));
   } else {
     const courses = JSON.parse(localStorage.getItem("courses"));
-    courses.push({ id, name: courseName, image: image.name, users: [] });
+    courses.push({ id, name: courseName, image, users: [] });
     localStorage.setItem("courses", JSON.stringify(courses));
   }
   cancelAddCourse();

@@ -1,0 +1,30 @@
+body {
+  background: #ff416c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ff4b2b,
+    #ff416c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ff4b2b,
+    #ff416c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container {
+  margin: 4rem;
+  //   background-color: rgba(255, 255, 255, 0.247);
+  padding: 2rem;
+  color: white;
+  .col-lg-6 {
+    background-color: rgba(255, 255, 255, 0.247);
+    max-width: 20%;
+    margin-left: 5rem;
+    min-height: 10rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+  }
+}
