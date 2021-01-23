@@ -8,6 +8,10 @@ const handleFormSubmit = (event) => {
   const user = users.find(
     (obj) => obj.username === username && obj.password === password
   );
+  if (user === undefined) {
+    alert("No User Found with given credentials!");
+    return;
+  }
   localStorage.setItem("currentUser", JSON.stringify(user));
   if (user.type === "admin") location.href = "index.html";
   else if (user.type === "user") location.href = "studentDashboard.html";
