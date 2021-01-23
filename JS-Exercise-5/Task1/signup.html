@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="dist/css/app.min.css" />
+    <link rel="stylesheet" href="dist/css/signup.min.css" />
 
     <title>Signup Page</title>
   </head>
@@ -22,18 +22,36 @@
       class="container d-flex align-items-center justify-content-center flex-column"
     >
       <h1 class="m-4">Signup Form</h1>
-      <form class="w-50">
+      <form class="w-50" id="signupForm" onsubmit="handleFormSubmit(event)">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" />
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            required
+          />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" />
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
         </div>
         <div class="mb-3">
           <label for="cpassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="cpassword" />
+          <input
+            type="password"
+            class="form-control"
+            id="cpassword"
+            name="cpassword"
+            required
+          />
         </div>
         <div class="form-check form-check-inline">
           <input
@@ -42,6 +60,7 @@
             name="type"
             id="isUser"
             value="user"
+            required
           />
           <label class="form-check-label" for="isUser">User</label>
         </div>
@@ -52,12 +71,17 @@
             name="type"
             id="isAdmin"
             value="admin"
+            required
           />
           <label class="form-check-label" for="isAdmin">Admin</label>
         </div>
         <a href="login.html">Login</a>
         <br />
-        <button type="submit" class="my-4 btn btn-primary">Submit</button>
+        <div class="d-grid">
+          <button type="submit" class="my-4 btn btn-lg btn-primary">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
 
@@ -66,5 +90,6 @@
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
     ></script>
+    <script src="scripts/signup.js"></script>
   </body>
 </html>

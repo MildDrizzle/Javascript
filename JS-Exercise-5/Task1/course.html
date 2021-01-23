@@ -12,10 +12,11 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="dist/css/courses.min.css" />
 
-    <title>Hello, world!</title>
+    <title>Add/Delete Course</title>
   </head>
-  <body>
+  <body onload="getCourses()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">LMS</a>
@@ -55,11 +56,70 @@
         </div>
       </div>
     </nav>
+    <div
+      class="container d-flex align-items-center justify-content-center flex-column"
+    >
+      <div class="view-course" id="courses">
+        <div class="d-grid">
+          <button
+            type="button"
+            class="btn btn-lg btn-success"
+            onclick="showAddCourseForm()"
+          >
+            Add New Course
+          </button>
+        </div>
+
+        <table class="table w-25">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Course Name</th>
+              <th scope="col">Remove Course</th>
+            </tr>
+          </thead>
+          <tbody id="table"></tbody>
+        </table>
+      </div>
+      <div class="add-course none" id="addCourse">
+        <h1 class="m-4">Add Course</h1>
+        <form class="w-50" id="courseForm" onsubmit="handleFormSubmit(event)">
+          <div class="mb-3">
+            <label for="cname" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="cname" name="cname" />
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label"
+              >Add Image for the Course</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              name="image"
+            />
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="my-4 btn btn-lg btn-primary">
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-lg btn-danger"
+              onclick="cancelAddCourse()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
     ></script>
+    <script src="scripts/course.js"></script>
     <script src="scripts/script.js"></script>
   </body>
 </html>

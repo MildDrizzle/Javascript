@@ -12,6 +12,8 @@ const alertClick = () => {
 
 const box1Click = () => {
   document.getElementById("box3txt").classList = "";
+  colorsOfBoxFourStarted = true;
+  boxFourInterval = setInterval(boxFourColorStart, 5000);
 };
 
 const box1Colorstart = () => {
