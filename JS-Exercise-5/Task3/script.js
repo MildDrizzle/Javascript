@@ -5,10 +5,12 @@ const colorsBoxTwo = ["red", "green", "blue", "yellow", "purple"];
 let colorsOfBoxFourStarted = false;
 let boxFourInterval;
 
-const alertClick = () => {
+//Add Event Listener for window load for the alert and start box1Color
+window.addEventListener("load", function () {
+  alert("Greetings Mr.X Please choose the surpirse box");
   document.getElementById("box1txt").classList = "";
   setInterval(box1Colorstart, 3000);
-};
+});
 
 const box1Click = () => {
   document.getElementById("box3txt").classList = "";
