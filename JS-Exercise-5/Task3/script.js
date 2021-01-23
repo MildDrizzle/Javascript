@@ -25,7 +25,10 @@ const box1Colorstart = () => {
   if (colorOneIndex >= colorsBoxOne.length) colorOneIndex = 0;
 };
 
+//Add Event Listener for keys pressed
 window.addEventListener("keydown", (e) => {
+  //if the key is up or right arrow key then start colors animation first then
+  //change it to the next color.
   if (e.key === "ArrowUp" || e.key === "ArrowRight") {
     if (!colorsOfBoxFourStarted) {
       colorsOfBoxFourStarted = true;
@@ -37,7 +40,10 @@ window.addEventListener("keydown", (e) => {
     if (colorTwoIndex >= colorsBoxTwo.length) colorTwoIndex = 0;
     document.getElementById("box4").style.backgroundColor =
       colorsBoxTwo[colorTwoIndex];
-  } else if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
+  }
+  //if the key is down or left arrow key then start colors animation first then
+  //change it to the next color.
+  else if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
     if (!colorsOfBoxFourStarted) {
       colorsOfBoxFourStarted = true;
       boxFourInterval = setInterval(boxFourColorStart, 5000);
