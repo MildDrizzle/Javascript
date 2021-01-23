@@ -12,3 +12,15 @@ const handleFormSubmit = (event) => {
   if (user.type === "admin") location.href = "index.html";
   else if (user.type === "user") location.href = "studentDashboard.html";
 };
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const msg = urlParams.get("msg");
+if (msg === "new") {
+  alert(
+    "Welcome To the LMS, you've been successfully registered! Please Login"
+  );
+}
+if (msg === "not") {
+  alert("Please Login to Use LMS");
+}

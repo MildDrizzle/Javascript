@@ -23,7 +23,5 @@ const handleFormSubmit = (event) => {
     });
     localStorage.setItem("users", JSON.stringify(users));
   }
+  window.location = "login.html?msg=new";
 };
-
-console.log(localStorage.getItem("users"));
-// localStorage.clear("users");
