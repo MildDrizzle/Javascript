@@ -12,7 +12,7 @@ const handleFormSubmit = (event) => {
     courses.push({ id, name: courseName, image: image.name, users: [] });
     localStorage.setItem("courses", JSON.stringify(courses));
   }
-  console.log(localStorage.getItem("courses"));
+  cancelAddCourse();
 };
 
 const showAddCourseForm = () => {
