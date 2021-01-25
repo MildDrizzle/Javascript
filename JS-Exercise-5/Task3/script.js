@@ -9,7 +9,7 @@ let boxFourInterval;
 window.addEventListener("load", function () {
   alert("Greetings Mr.X Please choose the surpirse box");
   document.getElementById("box1txt").classList = "";
-  setInterval(box1Colorstart, 3000);
+  boxFourInterval = setInterval(box1Colorstart, 3000);
 });
 
 const box1Click = () => {
