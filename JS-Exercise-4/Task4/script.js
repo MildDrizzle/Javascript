@@ -1,11 +1,39 @@
+document.addEventListener("DOMContentLoaded", (event) => {
+  document.getElementById("mainCheckbox").disabled = true;
+  document.getElementById("deleteAll").disabled = true;
+});
 let currentOperation = "add";
 let currentUpdateId;
 const data = [];
 const selected = [];
+
+const handleSelectScenarios = () => {
+  if (data.length === selected.length && data.length > 0) {
+    document.getElementById("mainCheckbox").checked = true;
+  } else {
+    document.getElementById("mainCheckbox").checked = false;
+  }
+  if (data.length === 0) {
+    document.getElementById("mainCheckbox").disabled = true;
+  } else {
+    document.getElementById("mainCheckbox").disabled = false;
+  }
+
+  if (selected.length === 0) {
+    document.getElementById("deleteAll").disabled = true;
+  } else {
+    document.getElementById("deleteAll").disabled = false;
+  }
+  selectedString();
+};
+
 const addData = () => {
   const data1 = document.getElementById("data1");
   const data2 = document.getElementById("data2");
-  if (data1.value === "" || data2.value === "") return;
+  if (data1.value === "" || data2.value === "") {
+    alert("Blank Values cannot be inserted.");
+    return;
+  }
   const randomId = Date.now().toString();
   const row = document.getElementById("data").insertRow(-1);
   row.id = randomId;
@@ -26,11 +54,7 @@ const addData = () => {
     cell5.innerHTML +
     `<button class="btn-danger" onclick="deleteRow(${randomId})">Delete Data</button>`;
   data1.value = data2.value = "";
-  if (document.getElementById("mainCheckbox").checked) {
-    console.log(cell1.childNodes[0]);
-    cell1.childNodes[0].checked = true;
-    selectDeselect(randomId);
-  }
+  handleSelectScenarios();
 };
 
 const update = (id) => {
@@ -46,12 +70,20 @@ const update = (id) => {
   currentUpdateId = id;
 };
 const deleteRow = (id) => {
+  if (!confirm("Are you sure you want to delete the data?")) {
+    return;
+  }
   if (currentUpdateId === id) {
     document.getElementById("data1").value = "";
     document.getElementById("data2").value = "";
+    document.getElementById("addBtn").classList = "btn-add";
+    document.getElementById("addBtn").innerHTML = "Add";
+    document.getElementById("addBtn").setAttribute("onclick", `addData()`);
   }
   document.getElementById(id).remove();
-  data.splice(data.indexOf(id), 1);
+  data.splice(data.indexOf(id.toString()), 1);
+  selected.splice(selected.indexOf(id.toString()), 1);
+  handleSelectScenarios();
 };
 
 const updateData = (id) => {
@@ -68,34 +100,42 @@ const updateData = (id) => {
 
 const selectAll = () => {
   if (document.getElementById("mainCheckbox").checked) {
+    selected.length = 0;
     data.forEach((id) => {
       document.getElementById(id).childNodes[0].childNodes[0].checked = true;
-      selectDeselect(id);
+      selected.push(id.toString());
     });
   } else {
     data.forEach((id) => {
       document.getElementById(id).childNodes[0].childNodes[0].checked = false;
-      selectDeselect(id);
+      selected.splice(selected.indexOf(id.toString()), 1);
     });
   }
   selectedString();
+  handleSelectScenarios();
 };
 
 const selectDeselect = (id) => {
-  selected.includes(id)
-    ? selected.splice(selected.indexOf(id), 1)
-    : selected.push(id);
+  selected.includes(id.toString())
+    ? selected.splice(selected.indexOf(id.toString()), 1)
+    : selected.push(id.toString());
   selectedString();
+  handleSelectScenarios();
 };
 
 const deleteSelcted = () => {
   if (selected.length > 0) {
-    deleteSelcted(deleteRow(selected.pop()));
-  } else {
-    document.getElementById("mainCheckbox").checked = false;
-    return;
+    if (!confirm("Are you sure you want to delete the selected data?")) {
+      return;
+    }
+    selected.forEach((value) => {
+      document.getElementById(value).remove();
+      data.splice(data.indexOf(value.toString()), 1);
+    });
+    selected.length = 0;
+    selectedString();
+    handleSelectScenarios();
   }
-  selectedString();
 };
 
 const selectedString = () => {

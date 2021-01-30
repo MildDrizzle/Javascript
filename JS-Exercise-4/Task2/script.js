@@ -1,11 +1,38 @@
 let currentOperation = "add";
 let currentUpdateId;
-
+let dataArray = [];
 const addData = () => {
   const data1 = document.getElementById("data1");
   const data2 = document.getElementById("data2");
-  if (data1.value === "" || data2.value === "") return;
+  if (data1.value === "" || data2.value === "") {
+    alert("Cannot enter blank values");
+    return;
+  }
+  let present;
+  if (dataArray.length !== 0) {
+    for (let i = 0; i < dataArray.length; i++) {
+      if (
+        dataArray[i].firstName === data1.value &&
+        dataArray[i].lastName === data2.value
+      ) {
+        present = true;
+        break;
+      } else {
+        present = false;
+      }
+    }
+  }
+
+  if (present) {
+    alert("Duplicate Data Entry Detected");
+    return;
+  }
   const randomId = Date.now().toString();
+  dataArray.push({
+    id: randomId,
+    firstName: data1.value,
+    lastName: data2.value,
+  });
   const row = document.getElementById("data").insertRow(-1);
   row.id = randomId;
   const cell1 = row.insertCell(0);
@@ -37,11 +64,20 @@ const update = (id) => {
   currentUpdateId = id;
 };
 const deleteRow = (id) => {
+  if (!confirm("Are you sure you want to delete the data?")) {
+    return;
+  }
   if (currentUpdateId === id) {
     document.getElementById("data1").value = "";
     document.getElementById("data2").value = "";
+    document.getElementById("addBtn").innerHTML = "Add";
+    document.getElementById("addBtn").classList = "btn-add";
+    document.getElementById("addBtn").setAttribute("onclick", `addData()`);
   }
   document.getElementById(id).remove();
+  dataArray = dataArray.filter((data) => {
+    return data.id !== id.toString();
+  });
 };
 
 const updateData = (id) => {
@@ -52,6 +88,15 @@ const updateData = (id) => {
   document.getElementById("addBtn").innerHTML = "Add";
   document.getElementById("addBtn").classList = "btn-add";
   document.getElementById("addBtn").setAttribute("onclick", `addData()`);
+  let index;
+  for (let i = 0; i < dataArray.length; i++) {
+    if (dataArray[i].id === id.toString()) {
+      index = i;
+      break;
+    }
+  }
+  dataArray[index].firstName = data1.value;
+  dataArray[index].secondName = data2.value;
   data1.value = data2.value = "";
   currentUpdateId = "";
 };

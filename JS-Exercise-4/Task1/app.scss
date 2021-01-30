@@ -52,6 +52,7 @@ button {
   font-weight: 500;
   outline: none;
   margin: 0 0.3rem;
+  cursor: pointer;
 }
 .start {
   background-color: rgb(8, 194, 23);
@@ -70,4 +71,5 @@ button {
 button:disabled {
   background-color: rgb(24, 1, 1);
   color: white;
+  cursor: not-allowed;
 }

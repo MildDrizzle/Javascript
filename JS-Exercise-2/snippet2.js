@@ -1,6 +1,6 @@
+"use strict";
 const dashEvenNum = (number) => {
-  dashedNum = [number[0]];
-
+  const dashedNum = [number[0]];
   for (let i = 1; i < number.length; i++) {
     if (number[i - 1] % 2 == 0 && number[i] % 2 == 0) {
       dashedNum.push("-", number[i]);

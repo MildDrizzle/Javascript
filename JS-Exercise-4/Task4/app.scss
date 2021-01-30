@@ -91,3 +91,8 @@ td {
 table {
   border-spacing: 15px;
 }
+
+button:disabled {
+  background-color: silver;
+  cursor: not-allowed;
+}

@@ -1,10 +1,28 @@
 let currentOperation = "add";
 let currentUpdateId;
 let dataArray = [];
+
 const addData = () => {
   const data1 = document.getElementById("data1");
   const data2 = document.getElementById("data2");
-  if (data1.value === "" || data2.value === "") return;
+  let present = false;
+  for (let i = 0; i < dataArray.length; i++) {
+    if (
+      dataArray[i].firstName === data1.value &&
+      dataArray[i].secondName === data2.value
+    ) {
+      present = true;
+    }
+  }
+  if (present) {
+    alert("Data Exists");
+    data1.value = data2.value = "";
+    return;
+  }
+  if (data1.value === "" || data2.value === "") {
+    alert("Empty Values cannot be inserted");
+    return;
+  }
   const randomId = Date.now().toString();
   const row = document.getElementById("data").insertRow(-1);
   row.id = randomId;
@@ -42,13 +60,19 @@ const update = (id) => {
   currentUpdateId = id;
 };
 const deleteRow = (id) => {
+  if (!confirm("Are you You want to delete")) {
+    return;
+  }
   if (currentUpdateId === id) {
+    document.getElementById("addBtn").innerHTML = "Add";
+    document.getElementById("addBtn").classList = "btn-add";
+    document.getElementById("addBtn").setAttribute("onclick", `addData()`);
     document.getElementById("data1").value = "";
     document.getElementById("data2").value = "";
   }
   document.getElementById(id).remove();
-  dataArray = dataArray.filter((data) => {
-    return data.id !== id;
+  dataArray.filter((data) => {
+    return data.id !== id.toString();
   });
 };
 
@@ -60,11 +84,15 @@ const updateData = (id) => {
   document.getElementById("addBtn").innerHTML = "Add";
   document.getElementById("addBtn").classList = "btn-add";
   document.getElementById("addBtn").setAttribute("onclick", `addData()`);
-  const index = dataArray.findIndex((data) => {
-    if (data.id === id) return true;
-  });
-  dataArray[index].firstName = data1;
-  dataArray[index].secondName = data2;
+  let index;
+  for (let i = 0; i < dataArray.length; i++) {
+    if (dataArray[i].id === id.toString()) {
+      index = i;
+      break;
+    }
+  }
+  dataArray[index].firstName = data1.value;
+  dataArray[index].secondName = data2.value;
   data1.value = data2.value = "";
   currentUpdateId = "";
 };
@@ -126,7 +154,7 @@ const renderData = () => {
       }
     }
     if (!present) {
-      const randomId = Date.now() + count;
+      const randomId = (Date.now() + count).toString();
       count += 1000;
       const row = document.getElementById("data").insertRow(-1);
       row.id = randomId;

@@ -1,3 +1,13 @@
+const checkIfCourseExsists = (course) => {
+  const data = JSON.parse(localStorage.getItem("courses"));
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].name.toLowerCase() === course.toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+};
+
 //Function for adding new course
 const handleFormSubmit = (event) => {
   event.preventDefault();
@@ -7,16 +17,27 @@ const handleFormSubmit = (event) => {
   const id = Date.now();
   //If there are no courses yet then add the first course
   if (localStorage.getItem("courses") === null) {
+    if (checkIfCourseExsists(courseName)) {
+      alert("Course Already exists");
+      document.getElementById("courseForm").reset();
+      return;
+    }
     const courses = [{ id, name: courseName, image, users: [] }];
     localStorage.setItem("courses", JSON.stringify(courses));
   }
   //If there are courses then push the new course to the array.
   else {
+    if (checkIfCourseExsists(courseName)) {
+      alert("Course Already exists");
+      document.getElementById("courseForm").reset();
+      return;
+    }
     const courses = JSON.parse(localStorage.getItem("courses"));
     courses.push({ id, name: courseName, image, users: [] });
     localStorage.setItem("courses", JSON.stringify(courses));
   }
   //Hide the course add form when the course is added
+  document.getElementById("courseForm").reset();
   cancelAddCourse();
 };
 //Show course add form initially the status is show all courses

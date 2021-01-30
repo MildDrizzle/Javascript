@@ -1,55 +1,38 @@
-let findDifference1 = (date1, date2) => {
-  let differenceInDays = parseInt((date2 - date1) / (1000 * 60 * 60 * 24), 10);
-
-  let differenceInYears = 0;
-  let differenceInMonths = 0;
-
-  if (differenceInDays >= 365) {
-    differenceInYears = Math.floor(differenceInDays / 365);
-    differenceInDays = differenceInDays % 365;
+"use strict";
+const date1 = new Date("07/01/2018");
+const date2 = new Date("05/03/2020");
+let minutes,
+  hours,
+  days = [],
+  weeks,
+  months,
+  year;
+const calulateSpan = (totalDays) => {
+  if (totalDays >= 365) {
+    year = Math.floor(totalDays / 365);
+    totalDays = totalDays % 365;
   }
-  if (differenceInDays >= 12) {
-    differenceInMonths = Math.floor(differenceInDays / 12);
-    differenceInDays = differenceInDays % 12;
+  if (totalDays >= 30) {
+    months = Math.floor(totalDays / 30);
+    totalDays = totalDays % 30;
   }
-
-  return (
-    differenceInYears +
-    " years " +
-    differenceInMonths +
-    " months " +
-    differenceInDays +
-    " days"
-  );
+  console.log(year + " years " + months + " months " + totalDays + " days");
 };
-
-let findDifference = (date1, date2) => {
-  let differenceInMinutes = parseInt((date2 - date1) / (1000 * 60), 10);
-
-  let differenceInHours = Math.floor(differenceInMinutes / 60);
-  let differenceInDays = Math.floor(differenceInHours / 24);
-  let differenceInWeeks =
-    Math.floor(differenceInDays / 7) +
-    " weeks " +
-    (differenceInDays % 7) +
-    " days";
-  let differenceInMonths =
-    Math.floor(differenceInDays / 30) +
-    " months " +
-    (differenceInDays % 30) +
-    " days";
-  let diffYears = findDifference1(date1, date2);
-
-  return `${diffYears} 
-or ${differenceInMonths} Months
-or ${differenceInWeeks} Weeks
-or ${differenceInDays} Days
-or ${differenceInHours} Hours
-or ${differenceInMinutes} Minutes
-    `;
+const calculate = () => {
+  const milliseconds = Math.abs(date2 - date1);
+  minutes = milliseconds / 60000;
+  hours = minutes / 60;
+  days.push(Math.ceil(hours / 24));
+  calulateSpan(days[0]);
+  weeks = days[0] / 7;
+  days.push(days[0] % 7);
+  months = Math.ceil(days[0] / 30);
+  days.push(days[0] % 30);
 };
-
-let d1 = new Date("01/03/2017");
-let d2 = new Date(" 06/12/2019");
-
-console.log(findDifference1(d1, d2));
+calculate();
+console.log(`or ${months} Months  ${days.pop()} Days
+or ${weeks} Weeks ${days.pop()} Days
+or ${days.pop()} Days
+or ${hours} Hours
+or ${minutes} minutes
+`);

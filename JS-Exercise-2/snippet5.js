@@ -1,4 +1,4 @@
-const array_a = [0, 1, 2, 3];
+const array_a = [0, 1, 2, 3, 5, 7];
 const array_b = [3, 4, 5];
 
 const findUnion = (arraya, arrayb) => {
@@ -28,21 +28,8 @@ const findDifference = (arraya, arrayb) => {
 const findIntersection = (arraya, arrayb) => {
   let array1 = [...arraya];
   let array2 = [...arrayb];
-  if (array1.length > array2.length) {
-    for (let i = 0; i < array2.length; i++) {
-      if (array2.indexOf(array1[i]) === -1) {
-        array1.splice(array1.indexOf(i), 1);
-      }
-    }
-    return array1;
-  } else {
-    for (let i = 0; i < array1.length; i++) {
-      if (array1.indexOf(array2[i]) === -1) {
-        array2.splice(array2.indexOf(i), 1);
-      }
-    }
-    return array2;
-  }
+  array1.filter((value) => array2.includes(value));
+  return array1;
 };
 
 console.log(

@@ -11,6 +11,9 @@ const filterByKeywords = () => {
       data[i].classList.remove("match");
       data[i].style = "display:none";
     }
+    if (searchData.length < 2) {
+      data[i].style = "display:block";
+    }
     //id there is em tag which is entered by the highlight function for highlighting the match tag
     //remove all em tags
     if (data[i].innerHTML.includes("<em>")) {
